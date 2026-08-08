@@ -12,33 +12,33 @@ public:
         }
         else
         {
-            deque<int> d;
+            deque<int> d_index;
 
             for (int i = 0; i < nums.size(); i++)
             {
                 const int val_new = nums[i];
-                for (int j = d.size() - 1; j >= 0; j--)
+                for (int j = d_index.size() - 1; j >= 0; j--)
                 {
-                    if (nums[d[j]] > val_new) // TODO 等于要不要删除
+                    if (nums[d_index[j]] > val_new) // TOd_indexO 等于要不要删除
                     {
                         break;
                     }
                     else
                     {
-                        d.pop_back();
+                        d_index.pop_back();
                     }
                 }
-                d.push_back(val_new);
+                d_index.push_back(i);
 
-                if (d.front() < i - k + 1)
+                if (d_index.front() < i - k + 1)
                 {
-                    d.pop_front();
+                    d_index.pop_front();
                 }
 
                 if (i >= k - 1)
                 {
-                    assert(!d.empty());
-                    ans.push_back(nums[d.front()]);
+                    assert(!d_index.empty());
+                    ans.push_back(nums[d_index.front()]);
                 }
             }
         }
