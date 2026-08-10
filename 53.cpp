@@ -26,8 +26,8 @@ public:
         {
             pre_sum += nums[i];
             max_sum = max_sum >= pre_sum ? max_sum : pre_sum;
-            min_sum = min_sum <= pre_sum ? min_sum : pre_sum;
             max_diff = std::max(max_diff, max_sum - min_sum);
+            min_sum = min_sum <= pre_sum ? min_sum : pre_sum;
             //
             cout << "now at round " << i << " ";
             cout << "max: "<<max_sum << " min: "<<min_sum<<" diff: "<<max_diff<<endl;
