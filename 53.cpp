@@ -7,7 +7,7 @@ public:
         {
             return 0;
         }
-        assert(nums.size() >= 1)
+        assert(nums.size() >= 1);
         int max_sum = nums[0];
         int min_sum = nums[0];
         long long pre_sum = 0;
