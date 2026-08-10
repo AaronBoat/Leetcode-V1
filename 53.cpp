@@ -22,8 +22,8 @@ public:
             pre_sum += nums[i];
             max_sum = max_sum >= pre_sum ? max_sum : pre_sum;
             min_sum = min_sum <= pre_sum ? min_sum : pre_sum;
-            pre_sum = max(pre_sum , max_sum - min_sum);
+            max_diff = std::max(max_diff , max_sum - min_sum);
         }
-        return max_sum - min_sum;
+        return max_diff;
     }
 };
