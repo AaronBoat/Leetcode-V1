@@ -19,7 +19,7 @@ public:
         assert(nums.size() > 1);
         int max_sum = nums[0];
         int min_sum = min(nums[0], 0);
-        int max_diff = -2e5;
+        int max_diff = max_sum - min_sum;
         long long pre_sum = 0;
         // vector<int> preSum(nums.size());
         for (int i = 0; i < nums.size(); i++)
