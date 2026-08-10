@@ -7,9 +7,14 @@ public:
         {
             return 0;
         }
-        assert(nums.size() >= 1);
+        if(nums.size() == 1)
+        {
+            return nums[0];
+        }
+        assert(nums.size() > 1);
         int max_sum = nums[0];
-        int min_sum = nums[0];
+        int min_sum = min(nums[0] , 0);
+        int max_diff = -2e5;
         long long pre_sum = 0;
         // vector<int> preSum(nums.size());
         for (int i = 0; i < nums.size(); i++)
@@ -17,6 +22,7 @@ public:
             pre_sum += nums[i];
             max_sum = max_sum >= pre_sum ? max_sum : pre_sum;
             min_sum = min_sum <= pre_sum ? min_sum : pre_sum;
+            pre_sum = max(pre_sum , max_sum - min_sum);
         }
         return max_sum - min_sum;
     }
