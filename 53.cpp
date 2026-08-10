@@ -3,8 +3,13 @@ class Solution
 public:
     int maxSubArray(vector<int> &nums)
     {
-        int max_sum = -2e4;
-        int min_sum = 2e4;
+        if(nums.size() < 1)
+        {
+            return 0;
+        }
+        assert(nums.size() >= 1)
+        int max_sum = nums[0];
+        int min_sum = nums[0];
         long long pre_sum = 0;
         // vector<int> preSum(nums.size());
         for (int i = 0; i < nums.size(); i++)
