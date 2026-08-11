@@ -27,15 +27,17 @@ public:
         {
             const int &l = it[0];
             const int &r = it[1];
+            int &now_l = now_lr[0];
+            int &now_r = now_lr[1];
             if (l > now_r)
             {
                 ans.push_back(now_lr);
-                now_lr[0] = l;
-                now_lr[1] = r;
+                now_l = l;
+                now_r = r;
             }
             else
             {
-                now_lr[1] = max(now_lr[1], r);
+                now_r = max(now_r, r);
             }
         }
         ans.push_back(now_lr);
