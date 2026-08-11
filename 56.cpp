@@ -36,6 +36,7 @@ public:
             else
             {
                 now_lr[1] = max(now_lr[1], r);
+                now_r = max(now_r,r);
             }
         }
         ans.push_back(now_lr);
