@@ -22,23 +22,23 @@ public:
         int now_r = intervals[0][1];
         vector<vector<int>> ans;
         vector<int> now_lr(2);
-        nowl_r = {now_l, now_r};
+        now_lr = {now_l, now_r};
         for (auto it : intervals)
         {
             const int &l = it[0];
             const int &r = it[1];
             if (l > now_r)
             {
-                ans.push_back(nowl_r);
-                nowl_r[0] = l;
-                nowl_r[1] = r;
+                ans.push_back(now_lr);
+                now_lr[0] = l;
+                now_lr[1] = r;
             }
             else
             {
-                nowl_r[1] = max(nowl_r[1], r);
+                now_lr[1] = max(now_lr[1], r);
             }
         }
-        ans.push_back(nowl_r);
-        // get in the last nowl_r
+        ans.push_back(now_lr);
+        // get in the last now_lr
     }
 };
