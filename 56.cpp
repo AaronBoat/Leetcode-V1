@@ -40,5 +40,6 @@ public:
         }
         ans.push_back(now_lr);
         // get in the last now_lr
+        return ans;
     }
 };
