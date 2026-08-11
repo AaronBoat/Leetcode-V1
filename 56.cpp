@@ -32,6 +32,8 @@ public:
                 ans.push_back(now_lr);
                 now_lr[0] = l;
                 now_lr[1] = r;
+                now_r = r;
+                now_l = l;
             }
             else
             {
