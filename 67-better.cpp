@@ -22,7 +22,7 @@ public:
     string minWindow(string s, string t)
     // TODO:DEBUG need_kinds 和 valid 来对比，显示是不是所有需要的字母都满足要求；一次只能改变一个字母的valid，而不是全局
     {
-        constexpr bool test = false;
+        constexpr bool test = true;
 
         int cnt_s[size_of_alphabet] = {0};
         int cnt_t[size_of_alphabet] = {0};
@@ -62,7 +62,7 @@ public:
                 memset(cnt_s, 0, sizeof(cnt_s));
                 continue;
             }
-            if (valid)
+            if (valid == need_kinds)
             {
                 getans = true;
                 int len_lr = right - left;
@@ -74,13 +74,14 @@ public:
                 }
                 if (left >= 0)
                 {
-                    // int &delete_left = cnt_s[(int)s[left]];
-                    // // delete_left--;
-                    // if (delete_left > 0)
-                    if (cnt_t[(int)s[left]] > 0)
+                    int &delete_left = cnt_s[(int)s[left]];
+                    int &need_left = cnt_t[(int)s[left]];
+                    if (need_left > 0 && delete_left == need_left)
                     {
                         valid--;
                     }
+                    delete_left--;
+                    // if (delete_left > 0)
                 }
                 left++;
                 // //
