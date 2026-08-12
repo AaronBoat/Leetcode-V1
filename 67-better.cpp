@@ -20,14 +20,22 @@ private:
 
 public:
     string minWindow(string s, string t)
+    // TODO:DEBUG need_kinds 和 valid 来对比，显示是不是所有需要的字母都满足要求；一次只能改变一个字母的valid，而不是全局
     {
+        constexpr bool test = false;
 
         int cnt_s[size_of_alphabet] = {0};
         int cnt_t[size_of_alphabet] = {0};
 
+        int need_kinds = 0;
         for (auto c : t)
         {
+            if (cnt_t[(int)c] == 0)
+            {
+                need_kinds++;
+            }
             cnt_t[(int)c]++;
+
             //
             // cout << c<<": "<<cnt_t[c]<<"\n";
             //
@@ -39,12 +47,14 @@ public:
         int ans_left = 0;
         int ans_right = 0;
         bool getans = false;
+        int valid = 0;
 
         string ans = "";
         while (right < (int)s.length())
         {
             //
-            //cout << "\nRound in Left and Right: " << left << " r: " << right << "\n";
+            if (test)
+                cout << "\nRound in Left and Right: " << left << " r: " << right << "\n";
             //
             if (left > right)
             {
@@ -52,7 +62,7 @@ public:
                 memset(cnt_s, 0, sizeof(cnt_s));
                 continue;
             }
-            if (cmp(cnt_s, cnt_t))
+            if (valid)
             {
                 getans = true;
                 int len_lr = right - left;
@@ -64,21 +74,34 @@ public:
                 }
                 if (left >= 0)
                 {
-                    cnt_s[(int)s[left]]--;
+                    // int &delete_left = cnt_s[(int)s[left]];
+                    // // delete_left--;
+                    // if (delete_left > 0)
+                    if (cnt_t[(int)s[left]] > 0)
+                    {
+                        valid--;
+                    }
                 }
                 left++;
                 // //
-                // cout << "valid, " << len_lr << "\n"
-                //      << "New L: " << left << "\n";
+                if (test)
+                    cout << "valid, " << len_lr << "\n"
+                         << "New L: " << left << "\n";
                 // //
             }
             else
             {
                 right++;
-                cnt_s[(int)s[right]]++;
-
+                int &add_right = cnt_s[(int)s[right]];
+                add_right++;
+                int &need_right = cnt_t[(int)s[right]];
+                if (cnt_t[(int)s[right]] > 0 && add_right == need_right)
+                {
+                    valid++;
+                }
                 // //
-                // cout << "Not valid, " << "New R: " << right << "\n";
+                if (test)
+                    cout << "Not valid, " << "New R: " << right << "\n";
                 // //
             }
         }
