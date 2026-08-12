@@ -10,7 +10,6 @@ private:
             {
                 return false;
             }
-            
         }
         return true;
     }
@@ -18,6 +17,7 @@ private:
     // {
     //     for(int i = 0 ; i < )
     // }
+
 public:
     string minWindow(string s, string t)
     {
@@ -28,25 +28,33 @@ public:
         for (auto c : t)
         {
             cnt_t[(int)c]++;
+            //
+            // cout << c<<": "<<cnt_t[c]<<"\n";
+            //
         }
 
-        int left = 0;
-        int right = 0;
+        int left = -1;
+        int right = -1;
         int min_len_lr = 2e5;
         int ans_left = 0;
         int ans_right = 0;
+        bool getans = false;
 
         string ans = "";
-        while (right < t.length())
+        while (right < (int)s.length())
         {
+            //
+            cout << "\nRound in Left and Right: " << left << " r: " << right << "\n";
+            //
             if (left > right)
             {
-                right = left ;
+                right = left;
                 memset(cnt_s, 0, sizeof(cnt_s));
                 continue;
             }
             if (cmp(cnt_s, cnt_t))
             {
+                getans = true;
                 int len_lr = right - left;
                 if (len_lr < min_len_lr)
                 {
@@ -54,18 +62,30 @@ public:
                     ans_left = left;
                     ans_right = right;
                 }
-                cnt_s[s[left]]--;
+                if (left >= 0)
+                {
+                    cnt_s[(int)s[left]]--;
+                }
                 left++;
+                //
+                cout << "valid, " << len_lr << "\n"
+                     << "New L: " << left << "\n";
+                //
             }
             else
             {
                 right++;
-                cnt_s[s[right]]++;
+                cnt_s[(int)s[right]]++;
 
+                //
+                cout << "Not valid, " << "New R: " << right << "\n";
+                //
             }
-
         }
-        ans = s.substr(ans_left,ans_right - ans_left);
+        if (getans)
+        {
+            ans = s.substr(ans_left, ans_right - ans_left + 1);
+        }
         return ans;
     }
 };
