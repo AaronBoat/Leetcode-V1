@@ -10,11 +10,9 @@ private:
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            
         }
+        return true;
     }
     // void en_empty(int *cnt)
     // {
