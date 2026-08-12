@@ -39,9 +39,9 @@ public:
         string ans = "";
         while (right < t.length())
         {
-            if (left >= right)
+            if (left > right)
             {
-                right = left + 1;
+                right = left ;
                 memset(cnt_s, 0, sizeof(cnt_s));
                 continue;
             }
