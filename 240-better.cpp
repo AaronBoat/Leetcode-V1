@@ -15,7 +15,7 @@ public:
         {
             return location >= 0 && location <= range_up;
         };
-        while (is_valid(x,size_row) && is_valid(y,size_col))
+        while (is_valid(x,size_row - 1) && is_valid(y,size_col - 1))
         {
             const int& val = matrix[x][y];
             if(val == target)
