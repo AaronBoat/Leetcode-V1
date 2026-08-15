@@ -10,26 +10,25 @@ public:
         const int size_row = matrix.size();
         const int size_col = matrix[0].size();
 
-        int x = 0 , y = size_col - 1;
-
-        
-        for (int i = 0; i < size_row; i++)
+        int x = 0, y = size_col - 1;
+        auto is_valid = [&](int location, int range_up)
         {
-            for(int j = 0 ; j <= back_col ; j++)
+            return location >= 0 && location <= range_up;
+        };
+        while (is_valid(x,size_row) && is_valid(y,size_col))
+        {
+            const int& val = matrix[x][y];
+            if(val == target)
             {
-                if(matrix[i][j] == target)
-                {
-                    return true;
-                }
-                if(matrix[i][j] > target)
-                {
-                    back_col = j - 1;
-                    break;
-                }
+                return true;
             }
-            if(matrix[i][0] > target)
+            if(val > target)
             {
-                return false;
+                y--;
+            }
+            if(val < target)
+            {
+                x++;
             }
         }
         return false;
