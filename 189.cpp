@@ -3,6 +3,7 @@ class Solution
 public:
     void rotate(vector<int> &nums, int k)
     {
+        k = k % nums.size();
         int begin_back = nums.size() - k;
 
         vector<int> tem(k);
