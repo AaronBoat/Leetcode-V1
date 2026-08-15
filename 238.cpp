@@ -7,10 +7,10 @@ public:
         vector<int> suf_pro(nums.size());
 
         pre_pro[0] = nums[0];
-        for (int i = 1; i < nums.size(); i++)
-        {
-            pre_pro[i] = pre_pro[i - 1] * nums[i];
-        }
+        // for (int i = 1; i < nums.size(); i++)
+        // {
+        //     pre_pro[i] = pre_pro[i - 1] * nums[i];
+        // }
 
         int back = nums.size() - 1;
         suf_pro[back] = nums[back];
@@ -20,13 +20,11 @@ public:
         }
 
         vector<int> ans(nums.size());
+        int left_pro = 1;
+
         for (int i = 0; i < nums.size(); i++)
         {
-            int left_pro = 1;
-            if (i >= 1)
-            {
-                left_pro = pre_pro[i - 1];
-            }
+
             int right_pro = 1;
             if (i <= back - 1)
             {
@@ -34,6 +32,8 @@ public:
             }
 
             ans[i] = left_pro * right_pro;
+
+            left_pro *= nums[i];
         }
         return ans;
     }
