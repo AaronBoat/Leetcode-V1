@@ -12,6 +12,13 @@ public:
 
         const size_t size_rows = matrix.size();
         const size_t size_cols = matrix[0].size();
+
+        if(matrix[0][0] == 0)
+        {
+            first_row_has_zero = true;
+            first_col_has_zero = true;
+        }
+
         // first col
         for (int row_now = 0; row_now < size_rows; row_now++)
         {
