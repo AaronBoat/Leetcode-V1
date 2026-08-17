@@ -17,8 +17,13 @@ class Solution
 public:
     vector<vector<int>> levelOrder(TreeNode *root)
     {
-        vector<TreeNode *> BFS;
         vector<vector<int>> ans;
+
+        if (root == nullptr)
+        {
+            return ans;
+        }
+        vector<TreeNode *> BFS;
         BFS.reserve(2e4);
         BFS.push_back(root);
 
