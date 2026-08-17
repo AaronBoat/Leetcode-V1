@@ -30,7 +30,8 @@ public:
             vector<int> val_level_now(size_level_now);
             for (int delta = 0; delta < size_level_now; delta++)
             {
-                TreeNode *node_now = BFS[head + delta] val_level_now[delta] = node_now;
+                TreeNode *node_now = BFS[head + delta];
+                val_level_now[delta] = node_now;
 
                 if (node_now->left != nullptr)
                 {
