@@ -31,7 +31,7 @@ public:
             for (int delta = 0; delta < size_level_now; delta++)
             {
                 TreeNode *node_now = BFS[head + delta];
-                val_level_now[delta] = node_now;
+                val_level_now[delta] = node_now->val;
 
                 if (node_now->left != nullptr)
                 {
