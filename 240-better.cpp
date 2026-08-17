@@ -11,22 +11,22 @@ public:
         const int size_col = matrix[0].size();
 
         int x = 0, y = size_col - 1;
-        auto is_valid = [&](int location, int range_up)
+        // auto is_valid = [&](int location, int range_up)
+        // {
+        //     return location >= 0 && location <= range_up;
+        // };
+        while (x < size_row && y >= 0)
         {
-            return location >= 0 && location <= range_up;
-        };
-        while (is_valid(x,size_row - 1) && is_valid(y,size_col - 1))
-        {
-            const int& val = matrix[x][y];
-            if(val == target)
+            const int val = matrix[x][y];
+            if (val == target)
             {
                 return true;
             }
-            if(val > target)
+            else if (val > target)
             {
                 y--;
             }
-            if(val < target)
+            else if (val < target)
             {
                 x++;
             }
