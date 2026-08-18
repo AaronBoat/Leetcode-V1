@@ -13,15 +13,16 @@ public:
     {
         ListNode *p = head;
         ListNode *q = head;
-        while(p != nullptr && q != nullptr)
+        while (p != nullptr && q != nullptr)
         {
-            if(p == q)
+
+            p = p->next;
+
+            q = q->next->next;
+            if (p == q)
             {
                 return true;
             }
-            p = p->next;
-
-            q=q->next->next;
         }
         return false;
     }
