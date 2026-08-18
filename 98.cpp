@@ -42,6 +42,7 @@ public:
     bool isValidBST(TreeNode *root)
     {
         vector<int> val_zhongxu;
-        return is_up(zhongxu(root,val_zhongxu));
+        zhongxu(root,val_zhongxu);
+        return is_up(val_zhongxu);
     }
 };
