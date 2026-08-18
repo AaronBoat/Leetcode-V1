@@ -55,5 +55,6 @@ public:
             s = s->next;
             s2 = s2->next;
         }
+        return true;
     }
 };
