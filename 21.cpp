@@ -41,7 +41,7 @@ public:
 
         while (list1 != nullptr && list2 != nullptr && now != nullptr)
         {
-            if (val1 > val2)
+            if (val1 < val2)
             {
                 now->next = list1;
                 list1 = list1->next;
@@ -52,6 +52,24 @@ public:
                 now->next = list2;
                 list2 = list2->next;
                 now = now->next;
+            }
+        }
+        if(list1 == nullptr && list2 != nullptr)
+        {
+            while(list2 != nullptr)
+            {
+                now->next = list2;
+                now = now->next ;
+                list2 = list2 ->next;
+            }
+        }
+        else if(list2 == nullptr && list1 != nullptr)
+        {
+            while(list1 != nullptr)
+            {
+                now->next = list1;
+                now = now->next ;
+                list1 = list1 ->next;
             }
         }
         return head;
