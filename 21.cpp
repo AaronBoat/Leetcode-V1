@@ -1,4 +1,4 @@
-// /**
+/**
 //* Definition for singly-linked list.
 struct ListNode
 {
@@ -9,6 +9,8 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 //  */
+#define val1 list1->val
+#define val2 list2->val
 class Solution
 {
 public:
@@ -25,8 +27,8 @@ public:
         }
         // const int &nxt_val1 = list1->next->val;
         // const int &nxt_val2 = list2->next->val;
-        const int &val1 = list1->val;
-        const int &val2 = list2->val;
+        // int &val1 = list1->val;
+        // int &val2 = list2->val;
         if (val1 > val2)
         {
             head = list2;
@@ -43,12 +45,18 @@ public:
         {
             if (val1 < val2)
             {
+                /*
+                    cout<<"Now choose val1 cause val1: "<<val1<<" val2: "<<val2<<"\n";
+                */
                 now->next = list1;
                 list1 = list1->next;
                 now = now->next;
             }
             else
             {
+                /*
+                    cout<<"Now choose val2 cause val1: "<<val1<<" val2: "<<val2<<"\n";
+                */
                 now->next = list2;
                 list2 = list2->next;
                 now = now->next;
