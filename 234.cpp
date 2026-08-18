@@ -19,6 +19,8 @@ public:
         }
         stack<int> val_stack;
         val_stack.push(head->val);
+        int count_node = 1;
+        int add_single_index = -1;
         head = head->next;
         while(head != nullptr)
         {
@@ -29,9 +31,24 @@ public:
             }
             else{
                 val_stack.push(head->val);
+                add_single_index = count_node;
             }
             head = head->next;
+            count_node ++;
         }
-        return val_stack.empty();
+        if(val_stack.empty())
+        {
+            return true;
+        }
+        else{
+            if(add_single_index == count_node / 2 && count_node % 2 ==1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 };
