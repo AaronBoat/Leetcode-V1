@@ -18,7 +18,12 @@ public:
 
             p = p->next;
 
-            q = q->next->next;
+            q = q->next;
+            if(q == nullptr)
+            {
+                return false;
+            }
+            q=q->next;
             if (p == q)
             {
                 return true;
