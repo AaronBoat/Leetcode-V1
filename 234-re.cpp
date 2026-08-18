@@ -33,6 +33,7 @@ public:
         {
             ListNode *tem_next = s->next;
             s->next = pre_s;
+            pre_s = s;
             s = tem_next;
             f = f->next;
             if (f == nullptr)
