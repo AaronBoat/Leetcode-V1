@@ -22,15 +22,16 @@ public:
                 return nullptr;
             }
             f=f->next;
+            if(is_s_meet_f)
+            {
+                s_second = s_second->next;
+            }
 
             if(s == f)
             {
                 is_s_meet_f =true;
             }
-            if(is_s_meet_f)
-            {
-                s_second = s_second->next;
-            }
+            
             if(s == s_second)
             {
                 return s;
