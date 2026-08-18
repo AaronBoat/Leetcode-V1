@@ -15,7 +15,7 @@ using namespace std;
 class Solution
 {
 private:
-    vector<int> zhongxu(TreeNode *root, vector<int> val_zhongxu)
+    vector<int> zhongxu(TreeNode *root, vector<int>& val_zhongxu)
     {
         if (root == nullptr)
         {
@@ -41,6 +41,7 @@ private:
 public:
     bool isValidBST(TreeNode *root)
     {
-        
+        vector<int> val_zhongxu;
+        return is_up(zhongxu(root,val_zhongxu));
     }
 };
