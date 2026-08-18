@@ -38,9 +38,9 @@ public:
         {
             return nullptr;
         }
-        const int mid_index = nums.size() / 2;
-        TreeNode *root = new TreeNode(nums[mid_index]);
+        // const int mid_index = nums.size() / 2;
+        // TreeNode *root = new TreeNode(nums[mid_index]);
 
-        return buildBST(root,0,nums.size());
+        return buildBST(nums,0,nums.size());
     }
 };
