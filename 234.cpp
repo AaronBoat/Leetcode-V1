@@ -13,7 +13,13 @@ using namespace std;
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
+        if(head == nullptr)
+        {
+            return true;
+        }
         stack<int> val_stack;
+        val_stack.push(head->val);
+        head = head->next;
         while(head != nullptr)
         {
             if(head->val == val_stack.top())
