@@ -15,30 +15,31 @@ public:
     ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     {
         ListNode *head;
-        if(list1 == nullptr)
+        if (list1 == nullptr)
         {
             return list2;
         }
-        if(list2 == nullptr)
+        if (list2 == nullptr)
         {
             return list1;
         }
-        const int &nxt_val1 = list1->next->val;
-        const int &nxt_val2 = list2->next->val;
+        // const int &nxt_val1 = list1->next->val;
+        // const int &nxt_val2 = list2->next->val;
         const int &val1 = list1->val;
         const int &val2 = list2->val;
-        if(val1 > val2)
+        if (val1 > val2)
         {
-            head = list1;
+            head = list2;
             list2 = list2->next;
         }
-        else{
-            head = list2;
+        else
+        {
+            head = list1;
             list1 = list1->next;
         }
         ListNode *now = head;
 
-        while (list1 != nullptr && list2 != nullptr &&now != nullptr)
+        while (list1 != nullptr && list2 != nullptr && now != nullptr)
         {
             if (val1 > val2)
             {
@@ -52,7 +53,6 @@ public:
                 list2 = list2->next;
                 now = now->next;
             }
-
         }
         return head;
     }
