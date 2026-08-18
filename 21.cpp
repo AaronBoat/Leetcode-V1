@@ -17,6 +17,14 @@ public:
         ListNode *head;
         const int &nxt_val1 = list1->next->val;
         const int &nxt_val2 = list2->next->val;
+        if(list1 == nullptr)
+        {
+            return list2;
+        }
+        if(list2 == nullptr)
+        {
+            return list1;
+        }
         head = list1->val > list2->val ? list2 : list1;
         ListNode *now = head;
 
