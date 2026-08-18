@@ -17,6 +17,10 @@ public:
         {
             return true;
         }
+        if(head->next == nullptr)
+        {
+            return true;
+        }
         stack<int> val_stack;
         val_stack.push(head->val);
         int count_node = 1;
