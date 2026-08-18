@@ -15,16 +15,16 @@ using namespace std;
 class Solution
 {
 private:
-    vector<int> zhongxu(TreeNode *root, vector<int>& val_zhongxu)
+    void zhongxu(TreeNode *root, vector<int>& val_zhongxu)
     {
         if (root == nullptr)
         {
-            return val_zhongxu;
+            return ;
         }
         zhongxu(root->left,val_zhongxu);
         val_zhongxu.push_back(root->val);
         zhongxu(root->right,val_zhongxu);
-        return val_zhongxu;
+        return ;
     }
     bool is_up(const vector<int>& val)
     {
