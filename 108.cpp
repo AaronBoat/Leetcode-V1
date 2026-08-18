@@ -37,7 +37,7 @@ public:
         TreeNode *root = new TreeNode(nums[mid_index]);
         vector<int> left_vec = sub_vector(nums, 0, mid_index);
         root->left = sortedArrayToBST(left_vec);
-        vector<int> right_vec = sub_vector(nums,mid_index+1,nums.size();
+        vector<int> right_vec = sub_vector(nums,mid_index+1,nums.size());
         root->right = sortedArrayToBST(right_vec);
         return root;
     }
