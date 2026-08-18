@@ -25,20 +25,30 @@ public:
         }
         const int &nxt_val1 = list1->next->val;
         const int &nxt_val2 = list2->next->val;
-        head = list1->val > list2->val ? list2 : list1;
+        const int &val1 = list1->val;
+        const int &val2 = list2->val;
+        if(val1 > val2)
+        {
+            head = list1;
+            list2 = list2->next;
+        }
+        else{
+            head = list2;
+            list1 = list1->next;
+        }
         ListNode *now = head;
 
         while (list1 != nullptr && list2 != nullptr &&now != nullptr)
         {
-            if (nxt_val1 > nxt_val1)
+            if (val1 > val2)
             {
-                now->next = list1->next;
+                now->next = list1;
                 list1 = list1->next;
                 now = now->next;
             }
             else
             {
-                now->next = list2->next;
+                now->next = list2;
                 list2 = list2->next;
                 now = now->next;
             }
