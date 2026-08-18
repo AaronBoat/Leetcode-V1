@@ -15,8 +15,6 @@ public:
     ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     {
         ListNode *head;
-        const int &nxt_val1 = list1->next->val;
-        const int &nxt_val2 = list2->next->val;
         if(list1 == nullptr)
         {
             return list2;
@@ -25,6 +23,8 @@ public:
         {
             return list1;
         }
+        const int &nxt_val1 = list1->next->val;
+        const int &nxt_val2 = list2->next->val;
         head = list1->val > list2->val ? list2 : list1;
         ListNode *now = head;
 
