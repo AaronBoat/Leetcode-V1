@@ -35,8 +35,10 @@ public:
         }
         const int mid_index = nums.size() / 2;
         TreeNode *root = new TreeNode(nums[mid_index]);
-        root->left = sortedArrayToBST(sub_vector(nums, 0, mid_index));
-        root->right = sortedArrayToBST(sub_vector(nums,mid_index+1,nums.size()-1);
+        vector<int> left_vec = sub_vector(nums, 0, mid_index);
+        root->left = sortedArrayToBST(left_vec);
+        vector<int> right_vec = sub_vector(nums,mid_index+1,nums.size();
+        root->right = sortedArrayToBST(right_vec);
         return root;
     }
 };
