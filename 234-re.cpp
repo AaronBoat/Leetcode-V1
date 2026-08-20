@@ -41,11 +41,16 @@ public:
                 is_odd_nodes = false;
                 break;
             }
+            f = f->next;
         }
         ListNode *s2 = pre_s;
         if (s2 == nullptr)
         {
             return true;
+        }
+        if(is_odd_nodes)
+        {
+            s = s->next;
         }
         while (s != nullptr)
         {
