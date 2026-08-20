@@ -17,17 +17,18 @@ public:
         {
             return nullptr;
         }
-        ListNode *s = head;
-        ListNode *f = head;
-        for (int i = 0; i < n ; i++)
+        ListNode dummy(0,head);
+        ListNode *s = &dummy;
+        ListNode *f = &dummy;
+        for (int i = 0; i < n + 1 ; i++)
         {
             f = f->next;
-            if (f == nullptr)
-            {
-                return nullptr;
-            }
+            // if (f == nullptr)
+            // {
+            //     return nullptr;
+            // }
         }
-        f = f->next;
+        // f = f->next;
         while (f != nullptr)
         {
             f = f->next;
