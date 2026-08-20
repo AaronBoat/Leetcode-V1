@@ -38,10 +38,7 @@ public:
         ListNode *s_n_n = s->next->next;
         delete (s->next);
         s->next = s_n_n;
-        if(head == nullptr)
-        {
-            head = s;
-        }
-        return head;
+        
+        return dummy.next;
     }
 };
