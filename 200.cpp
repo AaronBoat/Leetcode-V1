@@ -11,7 +11,7 @@ private:
         
         auto is_inside = [x_size, y_size](int x, int y)
         {
-            return x >= 0 && x <= x_size && y >= 0 && y <= y_size;
+            return x >= 0 && x < x_size && y >= 0 && y < y_size;
         };
         if(!is_inside(x,y))
         {
