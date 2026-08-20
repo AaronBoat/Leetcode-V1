@@ -8,14 +8,15 @@ private:
     {
         const int x_size = grid.size();
         const int y_size = grid[0].size();
-        if (grid[x][y] == 0)
-        {
-            return;
-        }
+        
         auto is_inside = [x_size, y_size](int x, int y)
         {
             return x >= 0 && x <= x_size && y >= 0 && y <= y_size;
         };
+        if (grid[x][y] == 0 || !is_inside(x,y))
+        {
+            return;
+        }
 
         grid[x][y] = '0';
         int move_x[4] = {1, 0, -1, 0};
