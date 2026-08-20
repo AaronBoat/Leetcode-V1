@@ -13,7 +13,11 @@ private:
         {
             return x >= 0 && x <= x_size && y >= 0 && y <= y_size;
         };
-        if (grid[x][y] == 0 || !is_inside(x,y))
+        if(!is_inside(x,y))
+        {
+            return;
+        }
+        if (grid[x][y] == 0 )
         {
             return;
         }
