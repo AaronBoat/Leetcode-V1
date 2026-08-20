@@ -15,8 +15,8 @@ public:
         {
             return nullptr;
         }
-        ListNode s = head;
-        ListNode f = head;
+        ListNode* s = head;
+        ListNode* f = head;
         for(int i = 0 ; i < n + 1; i++)
         {
             f = f->next;
