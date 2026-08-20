@@ -14,16 +14,15 @@ class Solution
 private:
     void zhongxu(TreeNode *root, vector<int> &kth, const int &k)
     {
-        if (root == nullptr)
+        if (root == nullptr||kth.size()>=k)
         {
             return;
         }
+
+        zhongxu(root->left, kth, k);
         if (kth.size() < k)
-        {
-            zhongxu(root->left, kth, k);
             kth.push_back(root->val);
-            zhongxu(root->right, kth, k);
-        }
+        zhongxu(root->right, kth, k);
     }
 
 public:
