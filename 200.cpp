@@ -41,7 +41,7 @@ public:
         {
             for(int j = 0 ; j<y_size;j++)
             {
-                if(grid[i][j] == '0')
+                if(grid[i][j] == '1')
                 {
                     ans ++;
                     dfs(i,j,grid);
