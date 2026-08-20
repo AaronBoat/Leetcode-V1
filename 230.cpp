@@ -12,7 +12,7 @@
 class Solution
 {
 private:
-    void zhongxu(TreeNode *root, vector<int> kth,const int& k)
+    void zhongxu(TreeNode *root, vector<int> &kth, const int &k)
     {
         if (root == nullptr)
         {
@@ -20,9 +20,9 @@ private:
         }
         if (kth.size() < k)
         {
-            zhongxu(root->left,kth,k);
+            zhongxu(root->left, kth, k);
             kth.push_back(root->val);
-            zhongxu(root->right,kth,k);
+            zhongxu(root->right, kth, k);
         }
     }
 
@@ -30,7 +30,7 @@ public:
     int kthSmallest(TreeNode *root, int k)
     {
         vector<int> kth;
-        zhongxu(root,kth,k);
+        zhongxu(root, kth, k);
         return kth.back();
     }
 };
