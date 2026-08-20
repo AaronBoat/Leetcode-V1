@@ -19,7 +19,7 @@ public:
         }
         ListNode *s = head;
         ListNode *f = head;
-        for (int i = 0; i < n + 1; i++)
+        for (int i = 0; i < n ; i++)
         {
             f = f->next;
             if (f == nullptr)
@@ -27,6 +27,7 @@ public:
                 return nullptr;
             }
         }
+        f = f->next;
         while (f != nullptr)
         {
             f = f->next;
