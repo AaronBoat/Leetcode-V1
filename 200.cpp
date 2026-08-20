@@ -17,7 +17,7 @@ private:
         {
             return;
         }
-        if (grid[x][y] == 0 )
+        if (grid[x][y] == '0' )
         {
             return;
         }
