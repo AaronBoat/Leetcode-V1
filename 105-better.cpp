@@ -29,7 +29,8 @@ private:
         TreeNode *root = new TreeNode(val_root);
         const int len_l = index_in - l;
         root->left = build(preorder, preorder[l + 1], l + 1, index_in - 1);
-        root->right = build(preorder,preorder[index_in + 1],index_in + 1,r);
+        root->right = build(preorder, preorder[index_in + 1], index_in + 1, r);
+        return root;
     }
 
 public:
@@ -39,5 +40,6 @@ public:
         {
             inorder_index_val_to_index[inorder[i]] = i;
         }
+        return build(preorder, preorder[0], 0, preorder.size() - 1)
     }
 };
