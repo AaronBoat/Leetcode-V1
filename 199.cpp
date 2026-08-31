@@ -15,7 +15,7 @@ class Solution
 {
 private:
     static constexpr int MAX_DEPTH = 100 + 5;
-    void walk_tree(TreeNode *root, vector<bool> &visited, int depth, vector<int> ans)
+    void walk_tree(TreeNode *root, vector<bool> &visited, int depth, vector<int>& ans)
     {
         if (root == nullptr)
         {
