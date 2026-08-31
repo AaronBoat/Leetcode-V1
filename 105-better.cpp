@@ -40,6 +40,6 @@ public:
         {
             inorder_index_val_to_index[inorder[i]] = i;
         }
-        return build(preorder, preorder[0], 0, preorder.size() - 1)
+        return build(preorder, preorder[0], 0, preorder.size() - 1);
     }
 };
