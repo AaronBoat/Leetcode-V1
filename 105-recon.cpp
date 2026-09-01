@@ -24,13 +24,13 @@ private:
 
     TreeNode *dg(vector<int> &preorder, int pre_l, int pre_r, int z_l, int z_r)
     {
-        if (pre_l > pre_r)
+        if (pre_l > pre_r || z_l > z_r)
         {
             return nullptr;
         }
         assert(pre_r - pre_l == z_r - z_l);
         const int val_root = preorder[pre_l];
-        const int index_z = index_inorder[val_root];
+        const int index_z = inorder_index_val_to_index[val_root];
         const int delta_leftSub = index_z - z_l;
         const int delta_rightSub = z_r - index_z;
         TreeNode *root = new TreeNode(val_root);
