@@ -14,21 +14,29 @@ struct TreeNode
 };
 #include <vector>
 #include <unordered_map>
+#include <assert.h>
 using namespace std;
 class Solution
 {
+
 private:
     unordered_map<int, int> inorder_index_val_to_index;
-    TreeNode *build(vector<int> &preorder, int index_root, int l, int r)
+
+    TreeNode *dg(vector<int> &preorder, int pre_l, int pre_r, int z_l, int z_r)
     {
-        if (l > r)
+        if (pre_l > pre_r)
         {
             return nullptr;
         }
-        const int index_in = inorder_index_val_to_index[preorder[index_root]];
-        TreeNode *root = new TreeNode(preorder[index_root]);
-        root->left = build(preorder, preorder[l + 1], l + 1, index_in - 1);
-        root->right = build(preorder, preorder[index_in + 1], index_in + 1, r);
+        assert(pre_r - pre_l == z_r - z_l);
+        const int val_root = preorder[pre_l];
+        const int index_z = index_inorder[val_root];
+        const int delta_leftSub = index_z - z_l;
+        const int delta_rightSub = z_r - index_z;
+        TreeNode *root = new TreeNode(val_root);
+        root->left = dg(preorder, pre_l + 1, pre_l + 1 + delta_leftSub, z_l, z_l + delta_leftSub);
+        root->right = dg(preorder, pre_r - delta_rightSub, pre_r, index_z + 1, z_r);
+
         return root;
     }
 
@@ -39,6 +47,6 @@ public:
         {
             inorder_index_val_to_index[inorder[i]] = i;
         }
-        return build(preorder, preorder[0], 0, preorder.size() - 1);
+        return dg(preorder,0,preorder.size(),0,inorder.size());
     }
 };
