@@ -31,8 +31,8 @@ private:
         assert(pre_r - pre_l == z_r - z_l);
         const int val_root = preorder[pre_l];
         const int index_z = inorder_index_val_to_index[val_root];
-        const int delta_leftSub = index_z - z_l;
-        const int delta_rightSub = z_r - index_z;
+        const int delta_leftSub = index_z - 1 - z_l;
+        const int delta_rightSub = z_r - (index_z + 1);
         TreeNode *root = new TreeNode(val_root);
         root->left = dg(preorder, pre_l + 1, pre_l + 1 + delta_leftSub, z_l, z_l + delta_leftSub);
         root->right = dg(preorder, pre_r - delta_rightSub, pre_r, index_z + 1, z_r);
@@ -47,6 +47,6 @@ public:
         {
             inorder_index_val_to_index[inorder[i]] = i;
         }
-        return dg(preorder,0,preorder.size(),0,inorder.size());
+        return dg(preorder,0,preorder.size()-1,0,inorder.size()-1);
     }
 };
