@@ -24,23 +24,24 @@ private:
             return ;
         }
         const int sum = last_sum + root->val;
-        count_sum[sum]++;
-        //1
+        /*
         cout<<"at val-"<<root->val<<" add sum: "<<sum<<"\n";
-        //2
-        const int need_sum = sum - target;
-
-        ans += count_sum[need_sum];
-        //1
+        */
+       const int need_sum = sum - target;
+       
+       ans += count_sum[need_sum];
+       
+       count_sum[sum]++;
+        /*
 cout<<"search for "<<need_sum<<" add "<<count_sum[need_sum]<<'\n';
-        //2
+        */
         dfs(count_sum, root->left, target, sum);
         dfs(count_sum, root->right, target, sum);
 
         count_sum[sum]--;
-        //1
+        /*
         cout<<"at val-"<<root->val<<" delete sum: "<<sum<<"\n";
-        //2
+        */
     }
 
 public:
