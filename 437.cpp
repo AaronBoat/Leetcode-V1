@@ -17,20 +17,20 @@ class Solution
 {
 private:
     int ans = 0;
-    void dfs(unordered_map<int, int> &count_sum, TreeNode *root, int target, int last_sum)
+    void dfs(unordered_map<long long, int> &count_sum, TreeNode *root, int target, long long last_sum)
     {
         if (root == nullptr)
         {
             return ;
         }
-        const int sum = last_sum + root->val;
+        const long long sum = last_sum + root->val;
         /*
         cout<<"at val-"<<root->val<<" add sum: "<<sum<<"\n";
         */
-       const int need_sum = sum - target;
+       const long long need_sum = sum - target;
        
        ans += count_sum[need_sum];
-       
+
        count_sum[sum]++;
         /*
 cout<<"search for "<<need_sum<<" add "<<count_sum[need_sum]<<'\n';
@@ -48,7 +48,7 @@ public:
     int pathSum(TreeNode *root, int targetSum)
     {
         ans = 0;
-        unordered_map<int,int> count_sum;
+        unordered_map<long long,int> count_sum;
         count_sum[0] = 1;
         dfs(count_sum,root,targetSum,0);
         return ans;
