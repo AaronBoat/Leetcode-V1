@@ -25,13 +25,22 @@ private:
         }
         const int sum = last_sum + root->val;
         count_sum[sum]++;
-        const int need_sum = target - sum;
+        //1
+        cout<<"at val-"<<root->val<<" add sum: "<<sum<<"\n";
+        //2
+        const int need_sum = sum - target;
 
         ans += count_sum[need_sum];
+        //1
+cout<<"search for "<<need_sum<<" add "<<count_sum[need_sum]<<'\n';
+        //2
         dfs(count_sum, root->left, target, sum);
         dfs(count_sum, root->right, target, sum);
 
         count_sum[sum]--;
+        //1
+        cout<<"at val-"<<root->val<<" delete sum: "<<sum<<"\n";
+        //2
     }
 
 public:
@@ -39,6 +48,7 @@ public:
     {
         ans = 0;
         unordered_map<int,int> count_sum;
+        count_sum[0] = 1;
         dfs(count_sum,root,targetSum,0);
         return ans;
     }
