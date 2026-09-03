@@ -12,13 +12,14 @@ public:
         {
             product *= nums[r];
 
-            while (product >= k)
+            while (product >= k && l < r)
             {
                 product /= nums[l];
                 l++;
             }
 
-            ans += r - l + 1;
+            if (product < k)
+                ans += r - l + 1;
 
             r++;
         }
