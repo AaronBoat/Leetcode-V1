@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
@@ -18,20 +20,25 @@ public:
 cout<<"l > r so move r to "<<r<<'\n';
                 //2
             }
-            const int p_after_add_r = product * nums[r] 
+            const int p_after_add_r = product * nums[r] ;
             if(p_after_add_r< k)
             {
+                //1
+cout<<"now l , r: "<<l<<" , " <<r<<"we can add "<<nums[r]<<" because product then: "<<p_after_add_r<<'\n';
+                //2
                 r++;
                 ans++;
                 product = p_after_add_r;
-                //1
-cout<<"we can add "<<nums[r]<<" because product then: "<<p_after_add_r<<'\n';
-                //2
             }
             else
             {
                 product /= nums[l];
+                //1
+cout<<"now l , r: "<<l<<" , " <<r<<"we delete "<<nums[l]<<" because product then: "<<product<<'\n';
+                //2
                 l++;
+                if(product < k)
+                ans++;
             }
         }
         return ans;
