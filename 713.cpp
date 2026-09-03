@@ -24,7 +24,7 @@ cout<<"l > r so move r to "<<r<<'\n';
             if(p_after_add_r< k)
             {
                 //1
-cout<<"now l , r: "<<l<<" , " <<r<<"we can add "<<nums[r]<<" because product then: "<<p_after_add_r<<'\n';
+cout<<"now l , r: "<<l<<" , " <<r<<" we can add "<<nums[r]<<" because product then: "<<p_after_add_r<<'\n';
                 //2
                 r++;
                 ans++;
@@ -34,11 +34,11 @@ cout<<"now l , r: "<<l<<" , " <<r<<"we can add "<<nums[r]<<" because product the
             {
                 product /= nums[l];
                 //1
-cout<<"now l , r: "<<l<<" , " <<r<<"we delete "<<nums[l]<<" because product then: "<<product<<'\n';
+cout<<"now l , r: "<<l<<" , " <<r<<" we delete "<<nums[l]<<" because product then: "<<product<<'\n';
                 //2
                 l++;
                 if(product < k)
-                ans++;
+                ans+= r - l;
             }
         }
         return ans;
