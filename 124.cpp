@@ -11,10 +11,11 @@
  */
 #include <cmath>
 #include <algorithm>
+#include <climits>
 class Solution
 {
 private:
-    int ans = -__INT_MAX__;
+    int ans = std::numeric_limits<int>::min();
     int max_path(TreeNode *root)
     {
         if (root == nullptr)
@@ -24,7 +25,7 @@ private:
         const int val = root->val;
         const int left_sub_path_max = max_path(root->left);
         const int right_sub_path_max = max_path(root->right);
-        ans = max(ans, max(left_sub_path_max + right_sub_path_max + val,val));
+        ans = max(ans, max(max(left_sub_path_max + right_sub_path_max + val,val),max(val+left_sub_path_max,val+right_sub_path_max)));
         //1
 //cout << " at pos: "<<val<<"with left and right: "<<left_sub_path_max<<" , "<<right_sub_path_max<<'\n';
         //2
@@ -34,7 +35,7 @@ private:
 public:
     int maxPathSum(TreeNode *root)
     {
-        ans = -__INT_MAX__;
+        ans = std::numeric_limits<int>::min();
         max_path(root);
         return ans;
     }
