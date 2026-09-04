@@ -32,7 +32,7 @@ public:
 
         if(max_heap.size() - min_heap.size() >= 2)
         {
-            while(max_heap.size() - min_heap.size() >= 2)
+            while(max_heap.size() > min_heap.size() + 1)
             {
                 int val = max_heap.top();
                 max_heap.pop();
