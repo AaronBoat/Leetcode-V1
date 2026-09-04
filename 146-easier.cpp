@@ -69,6 +69,7 @@ public:
         auto it = key_to_node.find(key);
         if (it != key_to_node.end())
         {
+            it->second->val = value;
             [[unlikely]] remove(it->second);
             add_to_head(it->second);
         }
