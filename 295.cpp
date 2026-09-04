@@ -8,7 +8,7 @@ private:
     priority_queue<int> max_heap; //小侧大顶堆
     priority_queue<int,vector<int>,greater<int>>  min_heap; // 大侧小顶堆
     //int total_size = 0;
-    static constexpr int reserve_size = 10000;
+    static constexpr int reserve_size = 1000;
 public:
     MedianFinder() {
         //total_size = 0;
