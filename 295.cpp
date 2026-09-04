@@ -1,5 +1,6 @@
 #include<queue>
 #include<vector>
+#include<utility>
 using namespace std;
 
 class MedianFinder {
@@ -7,10 +8,18 @@ private:
     priority_queue<int> max_heap; //小侧大顶堆
     priority_queue<int,vector<int>,greater<int>>  min_heap; // 大侧小顶堆
     //int total_size = 0;
-    //static constexpr int reverse_size = 10000;
+    static constexpr int reserve_size = 10000;
 public:
     MedianFinder() {
         //total_size = 0;
+        vector<int> max_container;
+        vector<int> min_container;
+
+        max_container.reserve(reserve_size);
+        min_container.reserve(reserve_size);
+
+        max_heap = priority_queue<int> (less<int>(),std::move(max_container));
+        min_heap = priority_queue<int,vector<int>,greater<int>> (greater<int>(),move(min_container));
     }
     
     void addNum(int num) {
@@ -52,10 +61,10 @@ public:
     }
     
     double findMedian() {
-        if(min_heap.size( ) + max_heap.size() % 2 ==0)
+        if((min_heap.size( ) + max_heap.size() )% 2 ==0)
         {
             [[unlikely]]
-            return (double)(min_heap.top() + max_heap.top());
+            return (double)((min_heap.top() + max_heap.top())/2.0);
         }
         else
         {
