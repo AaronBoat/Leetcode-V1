@@ -79,7 +79,7 @@ public:
             if (key_to_node.size() >=capacity)
             {
                 [[likely]]
-                key_to_node.erase(tail_dummy->key);
+                key_to_node.erase(tail_dummy->prev->key);
                 remove(tail_dummy->prev);
                 add_to_head(insert);
                 key_to_node[key] = insert;
