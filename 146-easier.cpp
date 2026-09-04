@@ -82,12 +82,13 @@ public:
                 key_to_node.erase(tail_dummy->key);
                 remove(tail_dummy->prev);
                 add_to_head(insert);
-
+                key_to_node[key] = insert;
             }
             else
             {
                 [[unlikely]]
                 add_to_head(insert);
+                key_to_node[key] = insert;
             }
         }
     }
