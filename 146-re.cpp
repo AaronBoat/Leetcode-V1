@@ -38,6 +38,9 @@ private:
     {
         int ptr_new_node = pools[head_free_dummy].next;
 
+        pools[head_free_dummy].next = pools[ptr].next;
+        pools[pools[ptr].next].prev = head_free_dummy;
+
         pools[ptr_new_node].key = key;
         pools[ptr_new_node].val = value;
         pools[ptr_new_node].free = false;
@@ -94,7 +97,7 @@ public:
         }
         else
         {
-            int ptr_new_node = new_node(key,value);
+            int ptr_new_node = new_node(key, value);
 
             if (cache.size() < capacity)
             {
@@ -103,8 +106,8 @@ public:
             }
             else
             {
-                remove(pools[tail_dummy].prev);
                 cache.erase(pools[pools[tail_dummy].prev].key);
+                remove(pools[tail_dummy].prev);
 
                 insert_to_head(ptr_new_node);
                 cache[key] = ptr_new_node;
