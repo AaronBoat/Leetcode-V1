@@ -18,7 +18,7 @@ public:
     MyCircularQueue(int k) {
         q.reserve(k);
         head = 0;
-        tail = 0;
+        tail = -1;
         this->k = k;
     }
     
@@ -27,6 +27,9 @@ public:
         if(tail != head)
         {
             q[tail] = value;
+            //1
+cout<<"enqueue: head = "<<head<<" , tail = "<<tail<<'\n';
+            //2
             return true;
         }
         else
