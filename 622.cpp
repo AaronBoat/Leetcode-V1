@@ -1,16 +1,17 @@
-#include<vector>
-#include<iostream>
+#include <vector>
+#include <iostream>
 using namespace std;
 
-class MyCircularQueue {
+class MyCircularQueue
+{
 private:
-    int head,tail_next;
+    int head, tail_next;
     vector<int> q;
     int k;
     void add_1(int &n)
     {
         n++;
-        if(n >= k)
+        if (n >= k)
         {
             n -= k;
         }
@@ -18,28 +19,40 @@ private:
     int to_add_1(int n)
     {
         n++;
-        if(n >= k)
+        if (n >= k)
         {
             n -= k;
         }
         return n;
     }
+    int to_minus_1(int n)
+    {
+        n--;
+        if (n < 0)
+        {
+            n += k;
+        }
+        return n;
+    }
+
 public:
-    MyCircularQueue(int k) {
+    MyCircularQueue(int k)
+    {
         q.reserve(k);
         head = 0;
         tail_next = 1;
         this->k = k;
     }
-    
-    bool enQueue(int value) {
-        
-        if(tail_next != head)
+
+    bool enQueue(int value)
+    {
+
+        if (tail_next != head)
         {
             q[tail_next] = value;
-            //1
-cout<<"enqueue: head = "<<head<<" , tail_next = "<<tail_next<<" with value: "<<value<<'\n';
-            //2
+            // 1
+            cout << "enqueue: head = " << head << " , tail_next = " << tail_next << " with value: " << value << '\n';
+            // 2
             add_1(tail_next);
             return true;
         }
@@ -48,9 +61,10 @@ cout<<"enqueue: head = "<<head<<" , tail_next = "<<tail_next<<" with value: "<<v
             return false;
         }
     }
-    
-    bool deQueue() {
-        if(head != tail_next)
+
+    bool deQueue()
+    {
+        if (head != to_minus_1(tail_next))
         {
             q[head] = -1;
             add_1(head);
@@ -61,9 +75,10 @@ cout<<"enqueue: head = "<<head<<" , tail_next = "<<tail_next<<" with value: "<<v
             return false;
         }
     }
-    
-    int Front() {
-        if(head != tail_next)
+
+    int Front()
+    {
+        if (head != to_minus_1(tail_next))
         {
             return q[head];
         }
@@ -72,9 +87,10 @@ cout<<"enqueue: head = "<<head<<" , tail_next = "<<tail_next<<" with value: "<<v
             return -1;
         }
     }
-    
-    int Rear() {
-        if(head != tail_next)
+
+    int Rear()
+    {
+        if (head != to_minus_1(tail_next))
         {
             return q[tail_next];
         }
@@ -83,14 +99,15 @@ cout<<"enqueue: head = "<<head<<" , tail_next = "<<tail_next<<" with value: "<<v
             return -1;
         }
     }
-    
-    bool isEmpty() {
-        return head == tail_next;
+
+    bool isEmpty()
+    {
+        return head == to_minus_1(tail_next);
     }
-    
-    bool isFull() {
-        int next_tail = tail_next + 1;
-        return next_tail == head + k || next_tail == head || head == next_tail + k;
+
+    bool isFull()
+    {
+        return tail_next == head + k || tail_next == head || head == tail_next + k;
     }
 };
 
