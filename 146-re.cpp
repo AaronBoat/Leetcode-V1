@@ -38,8 +38,8 @@ private:
     {
         int ptr_new_node = pools[head_free_dummy].next;
 
-        pools[head_free_dummy].next = pools[ptr].next;
-        pools[pools[ptr].next].prev = head_free_dummy;
+        pools[head_free_dummy].next = pools[ptr_new_node].next;
+        pools[pools[ptr_new_node].next].prev = head_free_dummy;
 
         pools[ptr_new_node].key = key;
         pools[ptr_new_node].val = value;
