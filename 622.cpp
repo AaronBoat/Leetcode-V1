@@ -1,9 +1,10 @@
 #include<vector>
+#include<iostream>
 using namespace std;
 
 class MyCircularQueue {
 private:
-    int head,tail;
+    int head,tail_next;
     vector<int> q;
     int k;
     void add_1(int &n)
@@ -14,22 +15,32 @@ private:
             n -= k;
         }
     }
+    int to_add_1(int n)
+    {
+        n++;
+        if(n >= k)
+        {
+            n -= k;
+        }
+        return n;
+    }
 public:
     MyCircularQueue(int k) {
         q.reserve(k);
         head = 0;
-        tail = -1;
+        tail_next = 1;
         this->k = k;
     }
     
     bool enQueue(int value) {
-        add_1(tail);
-        if(tail != head)
+        
+        if(tail_next != head)
         {
-            q[tail] = value;
+            q[tail_next] = value;
             //1
-cout<<"enqueue: head = "<<head<<" , tail = "<<tail<<'\n';
+cout<<"enqueue: head = "<<head<<" , tail_next = "<<tail_next<<" with value: "<<value<<'\n';
             //2
+            add_1(tail_next);
             return true;
         }
         else
@@ -39,7 +50,7 @@ cout<<"enqueue: head = "<<head<<" , tail = "<<tail<<'\n';
     }
     
     bool deQueue() {
-        if(head != tail)
+        if(head != tail_next)
         {
             q[head] = -1;
             add_1(head);
@@ -52,7 +63,7 @@ cout<<"enqueue: head = "<<head<<" , tail = "<<tail<<'\n';
     }
     
     int Front() {
-        if(head != tail)
+        if(head != tail_next)
         {
             return q[head];
         }
@@ -63,9 +74,9 @@ cout<<"enqueue: head = "<<head<<" , tail = "<<tail<<'\n';
     }
     
     int Rear() {
-        if(head != tail)
+        if(head != tail_next)
         {
-            return q[tail];
+            return q[tail_next];
         }
         else
         {
@@ -74,11 +85,11 @@ cout<<"enqueue: head = "<<head<<" , tail = "<<tail<<'\n';
     }
     
     bool isEmpty() {
-        return head == tail;
+        return head == tail_next;
     }
     
     bool isFull() {
-        int next_tail = tail + 1;
+        int next_tail = tail_next + 1;
         return next_tail == head + k || next_tail == head || head == next_tail + k;
     }
 };
