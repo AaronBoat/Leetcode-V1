@@ -47,6 +47,16 @@ private:
         return ptr_new_node;
     }
 
+    void free_node(int index)
+    {
+        pools[index].free = true;
+
+        pools[index].next = pools[head_free_dummy].next;
+        pools[index].prev = head_free_dummy;
+        pools[pools[head_free_dummy].next].prev = index;
+        pools[head_free_dummy].next = index;
+    }
+
 public:
     LRUCache(int capacity)
     {
@@ -106,8 +116,13 @@ public:
             }
             else
             {
-                cache.erase(pools[pools[tail_dummy].prev].key);
-                remove(pools[tail_dummy].prev);
+                // cache.erase(pools[pools[tail_dummy].prev].key);
+                // remove(pools[tail_dummy].prev);
+
+                int evicted_idx = pools[tail_dummy].prev;
+                cache.erase(pools[evicted_idx].key); // 先删除 map 对应元素
+                remove(evicted_idx);                 // 从 LRU 链表中摘除
+                free_node(evicted_idx);              // 回收回 Free List
 
                 insert_to_head(ptr_new_node);
                 cache[key] = ptr_new_node;
