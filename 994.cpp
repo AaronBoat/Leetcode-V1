@@ -37,6 +37,9 @@ public:
                 }
             }
         }
+        //1
+cout << "first num_1: "<<num_o<<'\n';
+        //2
         while (!B.empty())
         {
             auto now = B.front();
@@ -59,7 +62,7 @@ cout << " at time : "<<t<<" at x,y: "<<x<<" "<<y<<" is source "<<'\n';
                         num_o --;
                         B.push({nx,ny,t + 1});
                         //1
-cout<<" at time t : "<<t<<" infected nx,ny: "<<nx<<" "<<ny<<'\n';
+cout<<" at time t : "<<t<<" infected nx,ny: "<<nx<<" "<<ny<<" rest num_1: "<<num_o<<'\n';
                         //2
                     }
                 }
