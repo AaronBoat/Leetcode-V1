@@ -37,17 +37,17 @@ public:
                 }
             }
         }
-        //1
+        /*
 cout << "first num_1: "<<num_o<<'\n';
-        //2
+        */
         while (!B.empty())
         {
             auto now = B.front();
             B.pop();
             auto [x,y,t] = now;
-            //1
+            /*
 cout << " at time : "<<t<<" at x,y: "<<x<<" "<<y<<" is source "<<'\n';
-            //2
+            */
             max_time = max(max_time , t);
 
             for (int i = 0; i < 4; i++)
@@ -61,16 +61,16 @@ cout << " at time : "<<t<<" at x,y: "<<x<<" "<<y<<" is source "<<'\n';
                         grid[nx][ny] = 2;
                         num_o --;
                         B.push({nx,ny,t + 1});
-                        //1
+                        /*
 cout<<" at time t : "<<t<<" infected nx,ny: "<<nx<<" "<<ny<<" rest num_1: "<<num_o<<'\n';
-                        //2
+                        */
                     }
                 }
             }
         }
-        //1
+        /*
 cout << "final num_1: "<< num_o<<'\n';
-        //2
+        */
         if(num_o > 0)
         {
             return -1;
