@@ -68,7 +68,10 @@ cout<<" at time t : "<<t<<" infected nx,ny: "<<nx<<" "<<ny<<" rest num_1: "<<num
                 }
             }
         }
-        if(!num_o)
+        //1
+cout << "final num_1: "<< num_o<<'\n';
+        //2
+        if(num_o > 0)
         {
             return -1;
         }
