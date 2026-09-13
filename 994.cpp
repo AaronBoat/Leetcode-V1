@@ -52,7 +52,7 @@ public:
                 {
                     if(grid[nx][ny] == 1)
                     {
-                        grid[nx][ny] == 2;
+                        grid[nx][ny] = 2;
                         num_o --;
                         B.push({nx,ny,t + 1});
                     }
