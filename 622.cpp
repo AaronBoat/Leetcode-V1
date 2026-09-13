@@ -47,7 +47,7 @@ public:
     bool enQueue(int value)
     {
 
-        if (to_minus_1(tail_next) != head)
+        if (tail_next != head)
         {
             q[tail_next] = value;
             // 1
