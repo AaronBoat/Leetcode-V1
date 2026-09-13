@@ -59,7 +59,7 @@ cout << " at time : "<<t<<" at x,y: "<<x<<" "<<y<<" is source "<<'\n';
                         num_o --;
                         B.push({nx,ny,t + 1});
                         //1
-cout<<" at time t : "<<t<<" infected x,y: "<<x<<" "<<y<<'\n';
+cout<<" at time t : "<<t<<" infected nx,ny: "<<nx<<" "<<ny<<'\n';
                         //2
                     }
                 }
