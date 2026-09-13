@@ -12,12 +12,22 @@ private:
 
     inline void add_mod_k(int &x)
     {
-        x = (x + 1) % k;
+        // x = (x + 1) % k;
+        x++;
+        if(x >= k)
+        {
+            x -=k;
+        }
     }
 
     inline void minus_mod_k(int &x)
     {
-        x = (x - 1 ) %k;
+        // x = (x - 1 ) %k;
+        x--;
+        if(x < 0)
+        {
+            x+=k;
+        }
     }
 
     inline int get_minus_mod_k(int x)
